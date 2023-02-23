@@ -26,6 +26,8 @@ git config --global user.email "Email@example.com"
 ### Cloning a repository
 ```sh
 git clone git@github:"UserName"/"Repository_Name".git [1]	# Cloning via SSH
+```
+```sh
 git clone https://... [1]					# Cloning via HTTPS
 ```
 __[1]__ - If you want the repository to be cloned to the current folder,   
@@ -35,6 +37,8 @@ then leave this cell empty or specify the path(or folder name) to which you want
 ##### File indexing
 ```sh
 git add *.txt   # Index all text files
+```
+```sh
 git add .       # Indexing all files
 ```
 ##### Creating a commit
