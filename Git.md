@@ -11,7 +11,7 @@ ssh-keygen  # At this stage, you can choose an arbitrary name for your SSH key
 ### 2. Launching SSH-Agent and adding the key we just created to it
 ```sh
 eval "$(ssh-agent)"         # Launching SSH-Agent
-ssh-add ~/.ssh/"Key_Name"   # At this stage , we need to transfer the private key to the agent ( without extension .pub)
+ssh-add ~/.ssh/"Key_Name"   # At this stage, we need to transfer the private key to the agent ( without extension .pub)
 ssh-add -l                  # Checking the addition of the key
 ```
 
@@ -26,10 +26,10 @@ git config --global user.email "Email@example.com"
 ### Cloning a repository
 ```sh
 git clone git@github:"UserName"/"Repository_Name".git [1]	# Cloning via SSH
-git clone https://... [1]	# Cloning via HTTPS
+git clone https://... [1]					# Cloning via HTTPS
 ```
-__[1]__ - If you want the repository to be cloned to the current folder,  
-then leave this cell empty or specify the path(or folder name) to which you want to clone the repository
+__[1]__ - If you want the repository to be cloned to the current folder,   
+then leave this cell empty or specify the path(or folder name)   to which you want to clone the repository
 
 ### Other commands
 ##### File indexing
