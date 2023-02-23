@@ -300,7 +300,7 @@ Command:
 ##### 1. Download and assemble the yay package
 ```sh
 Commands:
-    cd Downloads
+	cd Downloads
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
 	makepkg -sric
