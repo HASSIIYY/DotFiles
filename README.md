@@ -73,272 +73,272 @@ Commands:
 ## System pre-configuration
 ##### 1. Log in to the system:
 ```sh
-	Command:
-		arch-chroot /mnt
+Command:
+	arch-chroot /mnt
 ```
 
 ##### 2. Settings the date and time:
 ```sh
-	Commands:
-		ln -sf /usr/share/zoneinfo/Europe/"City of residence" /etc/localtime
-		hwclock -w
+Commands:
+	ln -sf /usr/share/zoneinfo/Europe/"City of residence" /etc/localtime
+	hwclock -w
 ```
 
 ##### 3. Localize the system:
 ```sh
-	Edit a file:
-		nvim /etc/locale.gen	# Select the system languages, en_US.UTF-8 must be OPENED!
+Edit a file:
+	nvim /etc/locale.gen	# Select the system languages, en_US.UTF-8 must be OPENED!
 
-	Comand:
-		locale-gen
+Comand:
+	locale-gen
 ```
 
 ##### 4. We attribute the languages of the system:
 ```sh
-	Add a new file:
-		nvim /etc/locale.conf:
-			LANG=ru_RU.UTF-8	# Localization for Russian.
+Add a new file:
+	nvim /etc/locale.conf:
+		LANG=ru_RU.UTF-8	# Localization for Russian.
 ```
 
 ##### 5. Localizing the console:
 ```sh
-	Add a new file:
-		nvim /etc/vconsole.conf:    # Localization for Russian.
-			KEYMAP=ru
-			FONT=cyr-sun16
+Add a new file:
+	nvim /etc/vconsole.conf:    # Localization for Russian.
+		KEYMAP=ru
+		FONT=cyr-sun16
 ```
 
 ##### 6. Setting the computer name:
 ```sh
-	Add a new file:
-		nvim /etc/hostname:
-			"Computer name"
+Add a new file:
+	nvim /etc/hostname:
+		"Computer name"
 ```
 
 ##### 7. Editing a domain name file:
 ```sh
-	Add a new file:
-		nvim /etc/hosts:
-			127.0.0.1	localhost
-			::1				localhost
-			127.0.0.1	"Computer name".localdomain "Computer name"
+Add a new file:
+	nvim /etc/hosts:
+		127.0.0.1	localhost
+		::1				localhost
+		127.0.0.1	"Computer name".localdomain "Computer name"
 ```
 
 ##### 8. Creating a kernel image for RAM:
 ```sh
-	Command:
-		mkinitcpio -P	# We use the -P key  if one kernel is installed in the system, otherwise -p "Desired kernel" (for example linus-zen).
+Command:
+	mkinitcpio -P	# We use the -P key  if one kernel is installed in the system, otherwise -p "Desired kernel" (for example linus-zen).
 ```
 
 ##### 9. Setting the root password:
 ```sh
-	Command:
-		passwd	# The password the enterrd, but not displayed.
+Command:
+	passwd	# The password the enterrd, but not displayed.
 ```
 
 ##### 10. Instaling and configure the bootloader:
 ```sh
-	Commands:
-		grub-install /dev/"Disk name"
-		grub-mkconfig -o /boot/grub/grub.cfg
+Commands:
+	grub-install /dev/"Disk name"
+	grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ##### 11. Exit root and unmount /mnt directory:
 ```sh
-	Commands:
-		exit
-		umount -R /mnt
+Commands:
+	exit
+	umount -R /mnt
 ```
 
 ##### 12. Reboot into our system:
 ```sh
-	Command:
-		poweroff
+Command:
+	poweroff
 
-	Action:
-		We take out the bootbable USB flash drive.
+Action:
+	We take out the bootbable USB flash drive.
 ```
 
 ## Basic system setup
 ##### 1. Setting up access to root rights:
 ```sh
-	Edit a file:
-		nvim /etc/sudoers:
-			%wheel ALL=ALL(ALL)	# Uncoment the line
+Edit a file:
+	nvim /etc/sudoers:
+		%wheel ALL=ALL(ALL)	# Uncoment the line
 ```
 
 ##### 2. Creating a user:
 ```sh
-	Command:
-		useradd -m -G wheel -s /bin/bash "Username"
-		passwd "Username"	# The password must be DIFFERENT from the root user!
+Command:
+	useradd -m -G wheel -s /bin/bash "Username"
+	passwd "Username"	# The password must be DIFFERENT from the root user!
 ```
 
 ##### 3. We log out fron under root and go under our user:
 ```sh
-	Command:
-		exit
+Command:
+	exit
 ```
 
 ##### 4. We uses root acces:
 ```sh
-	Command:
-		sudo su
+Command:
+	sudo su
 ```
 
 ##### 5. Launching the NerworkMangager network service:
 ```sh
-	Command:
-		systemctl enable NetworkManager
+Command:
+	systemctl enable NetworkManager
 ```
 
 ##### 6. Rebooting:
 ```sh
-	Command:
-		reboot
+Command:
+	reboot
 ```
 
 ##### 7. Connectin to the internet via WiFi:
 ```sh
-	Commands:
-		sudo nmcli d wifi connect "WiFi Name" password "WiFi Password"
-		ping archlinux.org -c2	# Checing the network connection.
+Commands:
+	sudo nmcli d wifi connect "WiFi Name" password "WiFi Password"
+	ping archlinux.org -c2	# Checing the network connection.
 ```
 
 ##### 8. Opening the multilib repository:
 ```sh
-	Edit a file:
-		sudo nvim /etc/pacman.conf:
-			Uncoment the line:
-				[multilib]
-				Include = /etc/pacmanlist.d/mirrorlist
+Edit a file:
+	sudo nvim /etc/pacman.conf:
+		Uncoment the line:
+			[multilib]
+			Include = /etc/pacmanlist.d/mirrorlist
 ```
 
 ##### 9. Updating the reporitories and installing a set of packages for video acceleration:
 ```sh
-	Commands:
-		Nvidia:
-			sudo pacman -Syu nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulcan-icd-loader opencl-nvidia lib32-opencl-nvidia libxnvctrl
-		Intel:
-			sudo pacman -Syu lib32-mesa vulkan-intel lib32-vulkan-intel libva-intel-driver xf86-video-intel mesa-utils
+Commands:
+	Nvidia:
+		sudo pacman -Syu nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulcan-icd-loader opencl-nvidia lib32-opencl-nvidia libxnvctrl
+	Intel:
+		sudo pacman -Syu lib32-mesa vulkan-intel lib32-vulkan-intel libva-intel-driver xf86-video-intel mesa-utils
 ```
 
 ##### 10. Rebooting:
 ```sh
-	Command:
-		reboot
+Command:
+	reboot
 ```
 
 ## Adding additional kernel modules for Nvidia graphics card and BTRFS
 ##### 1. Open the kernel configuration file:
 ```sh
-	Edit a file:
-		sudo nvim /ect/mkinitcpio.conf:
-			MODULES=():
-				crc32c libcrc32c zlib_deflate btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm
+Edit a file:
+	sudo nvim /ect/mkinitcpio.conf:
+		MODULES=():
+			crc32c libcrc32c zlib_deflate btrfs nvidia nvidia_modeset nvidia_uvm nvidia_drm
 ```
 
 ##### 2. Reassembling Initramfs:
 ```sh
-	Command:
-		sudo mkinitcpio -P	# We use the -P key  if one kernel is installed in the system, otherwise -p "Desired kernel" (for example linus-zen).
+Command:
+	sudo mkinitcpio -P	# We use the -P key  if one kernel is installed in the system, otherwise -p "Desired kernel" (for example linus-zen).
 ```
 
 ##### 3. Rebooting:
 ```sh
-	Command:
-		reboot
+Command:
+	reboot
 ```
 
 ## Arch Linux Optimization
 ##### 1. Download and assemble the yay package:
 ```sh
-	Commands:
-	    cd Downloads
-		git clone https://aur.archlinux.org/yay.git
-		cd yay
-		makepkg -sric
-		cd
+Commands:
+    cd Downloads
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -sric
+	cd
 ```
 
 ##### 2. Instaling the Nvidia Tweaks:
 ```sh
-	Commands:
-		yay nvidia-tweaks
+Commands:
+	yay nvidia-tweaks
 ```
 
 ##### 3. Installing Ananicy:
 ```sh
-	Commands:
-		yay ananicy
-		sudo systemctl enable --new ananicy
+Commands:
+	yay ananicy
+	sudo systemctl enable --new ananicy
 ```
 
 ##### 4. Instaling Haveged:
 ```sh
-	Commands:
-		sudo pacman -S haveged
-		sudo systemctl evable haveged
+Commands:
+	sudo pacman -S haveged
+	sudo systemctl evable haveged
 ```
 
 ##### 5. Enabling the Trim service:
 ```sh
-	Command:
-		sudo systemctl enable fstrim.timer
-		sudo fstrim -v	# If it didn`t work, we use the -va key.
+Command:
+	sudo systemctl enable fstrim.timer
+	sudo fstrim -v	# If it didn`t work, we use the -va key.
 ```
 
 
 ##### 6. Instaling Dbus-broker:
 ```sh
-	Commands:
-		sudo pacman -S dbus-broker
-		sudo systemctl enable --now dbus-broker.service
+Commands:
+	sudo pacman -S dbus-broker
+	sudo systemctl enable --now dbus-broker.service
 ```
 
 ##### 7. Disabling NetworkManager-wait-online:
 ```sh
-	Commnad:
-		sudo systemctl mask NetworkManager-wait-online.service
+Commnad:
+	sudo systemctl mask NetworkManager-wait-online.service
 ```
 
 ##### 8. System load optimization:
 ```sh
-	Edit a file:
-		sudo nvim /etc/default/grub:
-			GRUB_TIMEOUT=0
-			GRUB_CMDLINE_LINUX_DEFAULT="":
-				quiet loglevel=0 rd.systemd.show_status=auto splash rootfstype=btrfs selinux=0 lpj=[1] raid=noautodetect noibrs noibpb no_stf_barrier tsx=on tsx_async_abort=off elevator=noop mitigations=off preempt=none
-			GRUB_TIMEOUT_STYLE=false
+Edit a file:
+	sudo nvim /etc/default/grub:
+		GRUB_TIMEOUT=0
+		GRUB_CMDLINE_LINUX_DEFAULT="":
+			quiet loglevel=0 rd.systemd.show_status=auto splash rootfstype=btrfs selinux=0 lpj=[1] raid=noautodetect noibrs noibpb no_stf_barrier tsx=on tsx_async_abort=off elevator=noop mitigations=off preempt=none
+		GRUB_TIMEOUT_STYLE=false
 
-		## [1] - You can find out via: sudo dmesg | grep lpj=
+	## [1] - You can find out via: sudo dmesg | grep lpj=
 
-	Command:
-		sudo grub-mkconfig -o /boot/grub/grub.cfg
+Command:
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ##### 9. Rebooting:
 ```sh
-	Command:
-		reboot
+Command:
+	reboot
 ```
 
 ## Creating a backup of the system
 ##### 1. Install backup program:
 ```sh
-	Command:
-		yay timmeshift
+Command:
+	yay timmeshift
 ```
 
 ##### 2. Initializing the TimeShift in BTRFS mode:
 ```sh
-	Command:
-		sudo timeshift --btrfs
+Command:
+	sudo timeshift --btrfs
 ```
 
 ##### 3. Creating the first backup:
 ```sh
-	Command:
-		sudo timeshift --create --comments "The Main Arch Linux System"
+Command:
+	sudo timeshift --create --comments "The Main Arch Linux System"
 ```
 
