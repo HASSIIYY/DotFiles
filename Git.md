@@ -1,24 +1,36 @@
 # Cheat sheet on setting up Git
 
 ## Configuring SSH Keys
-### 1. Creating an SSH key
+##### Creating an SSH key
 ```sh
-cd ~/.ssh
-ssh-keygen  # At this stage, you can choose an arbitrary name for your SSH key
+Commands:
+    mkdir ~/.ssh && cd ~/.ssh
+    ssh-keygen  # At this stage, you can choose an arbitrary name for your SSH key
 ```
-> After creating an SSH key, you need to add it to your GitHub account
 
-### 2. Launching SSH-Agent and adding the key we just created to it
+##### Adding an SSH key to a GitHub account
 ```sh
-eval "$(ssh-agent)"         # Launching SSH-Agent
-ssh-add ~/.ssh/"Key_Name"   # At this stage, we need to transfer the private key to the agent ( without extension .pub)
-ssh-add -l                  # Checking the addition of the key
+Command:
+    cat ~/.ssh/"Key_Name"   # At this stage we need to read the private key (without extension.pub)
+
+Action:
+    GitHub.com > Settings > SSH and GPG keys > New SSH key
+```
+
+
+### Launching SSH-Agent and adding the key we just created to it
+```sh
+Commands:
+	eval "$(ssh-agent)"         # Launching SSH-Agent
+	ssh-add ~/.ssh/"Key_Name"   # At this stage, we need to transfer the private key to the agent ( without extension .pub)
+	ssh-add -l                  # Checking the addition of the key
 ```
 
 ## Adding a Git Account
 ```sh
-git config --global user.name "UserName"
-git config --global user.email "Email@example.com"
+Commands:
+	git config --global user.name "UserName"
+	git config --global user.email "Email@example.com"
 ```
 
 

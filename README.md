@@ -481,9 +481,9 @@ Commands:
 
 ```sh
 Commands:
-	sudo cp .../DotFiles/Misc/00-keyboard.conf /etc/X11/xorg.conf.d     # The keyboard settings file. I have English and Russian layouts installed, as well as switching them by clicking on CapsLock
-	sudo cp .../DotFiles/Misc/70-synaptics.conf /etc/X11/xorg.conf.d	# Touchpad settings file for laptops
-	sudo cp .../DotFiles/Misc/.xinitrc /home/"UserName"/.xinitrc	    # Xorg Startup file
+	sudo cp .../DotFiles/Misc/00-keyboard.conf /etc/X11/xorg.conf.d		# The keyboard settings file. I have English and Russian layouts installed, as well as switching them by clicking on CapsLock
+	sudo cp .../DotFiles/Misc/70-synaptics.conf /etc/X11/xorg.conf.d 	# Touchpad settings file for laptops
+	sudo cp .../DotFiles/Misc/.xinitrc /home/"UserName"/.xinitrc	    	# Xorg Startup file
 ```
 
 ##### 6. Copy the cursor icon theme:

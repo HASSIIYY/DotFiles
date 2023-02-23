@@ -1,0 +1,112 @@
+################################################
+####   HOTKEYS FOR LAUNCHING APPLICATIONS   ####
+################################################
+
+# Terminal emulator
+super + space
+	alacritty
+
+# Program launcher
+super + Return
+	.config/rofi/launchers/launcher.sh
+
+
+################################################
+####              BSPWM CONTROL             ####
+################################################
+
+# Quit BSPWM
+super + Escape
+	bspc quit
+
+# Quit/Restart BSPWM
+shift + super + r; {b,s}
+	bspc {wm -r, pkill -USR1 -x sxhkd}
+
+# Close or kill process
+super + {_, shift + }n
+	bspc node -{c,k}
+
+# Switching to monocle mode and back
+super + m
+	bspc desktop -l next
+
+# Swap the current and the biggest window
+super + g
+	bspc node -s biggest.window
+
+
+################################################
+####         WINDOW STATE CONTROL           ####
+################################################
+
+# Set the window state to Tiled/Floating
+super + {t,f}
+	bspc node -t {tiled,floating}
+
+# Set the window state to Fullscreen
+F11
+	bspc node -t fullscreen
+
+
+################################################
+####       FOCUS AND MOVEMENT CONTROL       ####
+################################################
+
+# Focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# Focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+
+################################################
+####               PRESELECT                ####
+################################################
+
+# Preselect the direction in which a new window will open
+super + alt + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# Cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+
+################################################
+####          RESIZEIN THE WINDOW           ####
+################################################
+
+# Expand/Contract a new window by movin one of its side outward/inward
+super + s : {h,j,k,l}
+	STEP=20; SELECTION={1,2,3,4}; \
+	bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+	bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+
+
+################################################
+####                FN KEYS                 ####
+################################################
+
+# Increase the sound volume
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +1000
+
+# Reduce the sound volume
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -1000
+
+# Mute the sound
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Increase brightness
+XF86MonBrightnessUp
+	xbacklight -inc 10
+
+# Reduce brightness
+XF86MonBrightnessDown
+	xbacklight -dec 10
+
