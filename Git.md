@@ -1,14 +1,13 @@
 # Cheat sheet on setting up Git
----
 
 ## Configuring SSH Keys
 ### 1. Creating an SSH key
-> After creating an SSH key, you need to add it to your GitHub account
-
 ```sh
 cd ~/.ssh
 ssh-keygen  # At this stage, you can choose an arbitrary name for your SSH key
 ```
+> After creating an SSH key, you need to add it to your GitHub account
+
 ### 2. Launching SSH-Agent and adding the key we just created to it
 ```sh
 eval "$(ssh-agent)"         # Launching SSH-Agent
@@ -22,15 +21,14 @@ git config --global user.name "UserName"
 git config --global user.email "Email@example.com"
 ```
 
+
 ## Git Command Hints
----
 ### Cloning a repository
 ```sh
-git clone git@github:"UserName"/"Repository_Name".git [1]
- OR
-git clone https://... [1]
+git clone git@github:"UserName"/"Repository_Name".git [1]	# Cloning via SSH
+git clone https://... [1]	# Cloning via HTTPS
 ```
-__[1]__ - If you want the repository to be cloned to the current folder,
+__[1]__ - If you want the repository to be cloned to the current folder,  
 then leave this cell empty or specify the path(or folder name) to which you want to clone the repository
 
 ### Other commands
