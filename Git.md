@@ -29,7 +29,7 @@ git clone git@github:"UserName"/"Repository_Name".git [1]	# Cloning via SSH
 git clone https://... [1]					# Cloning via HTTPS
 ```
 __[1]__ - If you want the repository to be cloned to the current folder,   
-then leave this cell empty or specify the path(or folder name)   to which you want to clone the repository
+then leave this cell empty or specify the path(or folder name) to which you want to clone the repository
 
 ### Other commands
 ##### File indexing
