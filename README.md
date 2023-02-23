@@ -166,7 +166,7 @@ Add a new file:
 Add a new file:
 	nvim /etc/hosts:
 		127.0.0.1	localhost
-		::1				localhost
+		::1		localhost
 		127.0.0.1	"Computer name".localdomain "Computer name"
 ```
 
@@ -317,7 +317,7 @@ Commands:
 ```sh
 Commands:
 	yay ananicy
-	sudo systemctl enable --new ananicy
+	sudo systemctl enable ananicy
 ```
 
 ##### 4. Instaling Haveged
@@ -339,7 +339,7 @@ Command:
 ```sh
 Commands:
 	sudo pacman -S dbus-broker
-	sudo systemctl enable --now dbus-broker.service
+	sudo systemctl enable dbus-broker.service
 ```
 
 ##### 7. Disabling NetworkManager-wait-online
