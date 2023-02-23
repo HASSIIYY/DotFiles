@@ -25,7 +25,6 @@
 Command:
 	lsblk -f
 ```
-
 ##### 2. Installing the GPT partition table:
 ```sh
 Command:
@@ -44,7 +43,8 @@ Command:
 
 Sections:
 	1. 31MiB - BIOS Boot
-	2. 300MiB -> 500MiB - EFI System
+	2. 300MiB <-> 500MiB - EFI System
+	3. 4GiB <-> 8GiB - Linux SWAP
 	3. The rest of the disk space - Linux File System
 ```
 
@@ -52,13 +52,14 @@ Sections:
 ```sh
 Commands:
 	mkfs.vfat /dev/"Second disk partition"
-	mkfs.btrfs -f /dev/"Trids disk partition"
+	mkswap /dev/"Third disk partition"
+	mkfs.btrfs -f /dev/"Fourth disk partition"
 ```
 
 ##### 5. Mounting partition:
 ```sh
 Command:
-	mount /dev/"Trids disk parition" /mnt
+	mount /dev/"Fourth disk parition" /mnt
 ```
 
 ##### 6. Creating subvolumes:
@@ -67,6 +68,51 @@ Commands:
 	btrfs su cr /mnt/@
 	btrfs su cr /mnt/@home
 	umount -R /mnt
+```
+
+##### 7. Mount the subvolumes and partitions:
+```sh
+Commands:
+	mount -o rw,noatime,nodatacow,max_inline=256,compress=zstd:3,ssd,ssd_spread,discard=async,space_cache=v2,commit=120,subvol=/@ /dev/"Fourth disk partition" /mnt
+
+	mkdir /mnt/home
+	mount -o rw,noatime,nodatacow,max_inline=256,compress=zstd:3,ssd,ssd_spread,discard=async,space_cache=v2,commit=120,subvol=@home /dev/"Fourth disk partition" /mnt/home
+
+
+	mkdir /mnt/boot
+	mkdir /mnt/boot/EFI
+	mount /dev/"Second disk partition" /mnt/boot/EFI
+```
+
+##### 8. Mounting an additional disk partition:
+```sh
+Commands:
+	mkdir /mnt/home/"Username"
+	mkdir /mnt/home/.Instalations
+	mount -o rw,max_inline=256,noatime,compress=zstd:3,discard=async,space_cache=v2,commit=120,subvol=/ /dev/"Additional disk partition" /mnt/home/"Username"
+	mount -o rw,max_inline=256,noatime,compress=zstd:3,discard=async,space_cache=v2,commit=120,subvol=/ /dev/"Additional disk partition" /mnt/home/.Instalations
+```
+
+##### 8. Connecting to WiFi:
+```sh
+Command:
+	iwctl:
+	    station "ip a - devices" connect "WiFi name"
+	    ping archlinux.org -c2  # Checing the network connection
+```
+
+##### 9. Installing the basic system:
+```sh
+Commands:
+	pacman -Sy archlinux-keyring
+	pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware dosfstools btrfs-progs intel-ucode iucode-tool grub efibootmgr dhcpcd dhclient networkmanager network-manager-applet alsa-lib alsa-lib-devel alsa-plugins alsa-tools alsa-utils git neovim
+```
+
+##### 10. Creating a file system configuration file:
+```sh
+Commands:
+	genfstab -U /mnt >> /mnt/etc/fstab
+	vim /mnt/etc/fstab
 ```
 
 
