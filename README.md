@@ -85,6 +85,9 @@ Commands:
 ```
 
 ##### 8. Mounting an additional disk partition
+> ATTENTION!: The implementation of this paragraph is not necessary.
+> My system uses an additional disk for user files and installation of games, so I mount two more partitions.
+
 ```sh
 Commands:
 	mkdir /mnt/home/"Username"
@@ -205,6 +208,7 @@ Action:
 	We take out the bootbable USB flash drive.
 ```
 
+
 ## Basic system setup
 ##### 1. Setting up access to root rights
 ```sh
@@ -275,6 +279,7 @@ Command:
 	reboot
 ```
 
+
 ## Adding additional kernel modules for Nvidia graphics card and BTRFS
 ##### 1. Open the kernel configuration file
 ```sh
@@ -295,6 +300,7 @@ Command:
 Command:
 	reboot
 ```
+
 
 ## Arch Linux Optimization
 ##### 1. Download and assemble the yay package
@@ -369,6 +375,7 @@ Command:
 	reboot
 ```
 
+
 ## Creating a backup of the system
 ##### 1. Install backup program
 ```sh
@@ -388,3 +395,179 @@ Command:
 	sudo timeshift --create --comments "The Main Arch Linux System"
 ```
 
+
+## Installing BSPWM
+##### 1. Installing BSPWM and its dependencies:
+```sh
+Command:
+    sudo pacman -Sy bspwm sxhkd xorg-server xorg-xinit xorg-xrandr picom nvidia-prime
+```
+
+##### 2. Installing bluetooth modules:
+```sh
+Commands:
+    sudo pacman -Sy bluez bluez-utils
+	sudo systemctl enable bluetooth
+```
+
+##### 3. Installing Fonts:
+```sh
+Command:
+    sudo pacman -Sy ttf-font-awesome ttf-ubuntu-font-family ttf-jetbrains-mono-nerd
+```
+##### 4. Installing the Sound System Assistant:
+```sh
+CommandS:
+    sudo pacman -Sy pulseaudio pulseaudio-alsa pulseaudio-bluetooth
+	yay -S pulseaudio-control
+```
+
+##### 5. Installing programs:
+```sh
+Command:
+	sudo pacman -S alacritty ranger rofi polybar neofetch htop unzip cmus feh mpv firefox telegram-desktop
+```
+
+##### 6. Installing program dependencies:
+```sh
+Command:
+    sudo pacman -Sy wmctrl pacman-contrib xclip acpilight xf86-input-synaptics python-pip ueberzug fmpegthumbnailer
+```
+
+##### 7. Installing Printer Drivers:
+```sh
+Commands:
+	sudo pacman -S cups cups-pdf simple-scan
+	sudo systemctl enable cups
+	yay pantum  # ATTENTION!: My printer is a Pantum brand, so I'm installing a driver for this brand, you probably have a different brand.
+```
+
+
+## Configuring BSPWM
+##### 1. Adding environment variables:
+```sh
+Edit a file:
+	sudo nvim /etc/environment:
+		VISUAL=nvim     # We indicate to the system that we use NeoVim as the main code editor
+```
+
+##### 2. Adding a user to groups:
+```sh
+Command:
+	sudo usermod -aG ftp,http,mail,audio,disk,input,scanner,storage,video "Username"
+	groups "Username"   # We check the groups to which our user has been added
+```
+
+##### 3. Creating links to folders from additional disk partitions
+> ATTENTION!: The implementation of this paragraph is not necessary.
+> My system uses an additional disk for user files and installing games, so I create links to user folders such as Documents, Downloads and others.
+
+```sh
+Commands:
+    ln -sf /run/media/HardDisk/"Folder_Name" /home/"UserName"/"FolderName"
+```
+
+##### 4. Changing the owner of folders and files
+```sh
+Commands:
+    # Since these folders were created from under the Root user, they and all attached files and folders belong to him
+    sudo chown "UserNamr":"UserName" -R /home/"Username"
+    sudo chown "UserName":"UserName" -R /home/.Instalations
+```
+
+##### 5. Copy the Xorg configuration files:
+> ATTENTION!:
+> Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files
+
+```sh
+Commands:
+	sudo cp .../DotFiles/Misc/00-keyboard.conf /etc/X11/xorg.conf.d     # The keyboard settings file. I have English and Russian layouts installed, as well as switching them by clicking on CapsLock
+	sudo cp .../DotFiles/Misc/70-synaptics.conf /etc/X11/xorg.conf.d	# Touchpad settings file for laptops
+	sudo cp .../DotFiles/Misc/.xinitrc /home/"UserName"/.xinitrc	    # Xorg Startup file
+```
+
+##### 6. Copy the cursor icon theme:
+> ATTENTION!:
+> Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files
+
+```sh
+Command:
+	sudo cp -r .../DotFiles/Misc/"Icon Themes" /usr/share/icons/
+
+Edit a file:
+	sudo nvim /usr/share/icons/default/index.theme:
+		Inherits="Icon Theme"
+```
+
+##### 7. Disabling unnecessary application icons:
+```sh
+Edit Files:
+	sudo ranger:
+		/usr/share/applications/*.desktop
+```
+
+##### 8. Rebooting
+```sh
+Command:
+	sudo reboot
+```
+
+##### 9. Log in to BSPWM:
+```sh
+Command:
+	startx
+```
+
+##### 10. Adding a printer to the system:
+```sh
+Web interface:
+	http://localhost:631/
+```
+
+##### 11. Autologin and Autostart Xorg via Systemd:
+> ATTENTION!:
+> Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files
+
+```sh
+Command:
+	sudo cp .../DotFiles/Misc/x11-autologin.service /etc/systemd/system
+```
+
+## Configuring SSH Keys
+##### 1. Creating an SSH key
+```sh
+Commands:
+    mkdir ~/.ssh && cd ~/.ssh
+    ssh-keygen  # At this stage, you can choose an arbitrary name for your SSH key
+```
+
+##### 2. Adding an SSH key to a GitHub account
+```sh
+Command:
+    cat ~/.ssh/"Key_Name"   # At this stage we need to read the private key (without extension.pub)
+
+Action:
+    GitHub.com > Settings > SSH and GPG keys > New SSH key
+```
+
+##### 3. Adding a Git Account
+```sh
+Commands:
+    git config --global user.name "UserName"
+    git config --global user.email "Email@example.com"
+```
+
+## Installing add-ons for files and programs
+#### Configuring NeoVim
+##### 1. Integrating Vim-Plug:
+```sh
+Command:
+	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+
+##### 2. Installing Vim Plugins:
+```sh
+Command:
+	:PlugInstall	# Apply the command in the editor.
+```
