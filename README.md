@@ -502,7 +502,7 @@ Edit a file:
 ```
 
 ##### 7. Disabling unnecessary application icons:
-> __ATTENTION!__ <br/>
+> __ATTENTION!__ The implementation of this paragraph is not necessary. <br/>
 > For some applications I edit __.desktop__ files, for more convenient interaction in the Rofi menu. <br/>
 > For example, I change the name of some applications or add the item NoDisplay=true to disable the display of this application in the menu.
 
