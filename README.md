@@ -1,6 +1,7 @@
 # INFO
-|Distribution|[Arch Linux](https://archlinux.org)
+|Type|Name|Configuration|
 |:---:|:---:|
+|Distribution|[Arch Linux](https://archlinux.org)|- [x]|
 |Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)
 |Terminal|[Alacritty](https://github.com/alacritty/alacritty)
 |Shell|[Bash](https://www.gnu.org/software/bash)
@@ -525,7 +526,7 @@ Web interface:
 ```
 
 ##### 11. Autologin and Autostart Xorg via Systemd:
-> ATTENTION!:
+> ATTENTION! <br/>
 > Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files
 
 ```sh
