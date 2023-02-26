@@ -473,7 +473,7 @@ Commands:
 ```sh
 Commands:
     # Since these folders were created from under the Root user, they and all attached files and folders belong to him
-    sudo chown "UserNamr":"UserName" -R /home/"Username"
+    sudo chown "UserName":"UserName" -R /home/"Username"
     sudo chown "UserName":"UserName" -R /home/.Instalations
 ```
 
@@ -554,7 +554,8 @@ Command:
     cat ~/.ssh/"Key_Name"   # At this stage we need to read the private key (without extension.pub)
 
 Action:
-    GitHub.com > Settings > SSH and GPG keys > New SSH key
+    Copy the output of the previous command to:
+	GitHub.com > Settings > SSH and GPG keys > New SSH key
 ```
 
 ##### 3. Adding a Git Account
