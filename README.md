@@ -1,23 +1,23 @@
 # INFO
 |Type|Name|Configuration|
-|:---:|:---:|
+|:---:|:---:|:---:|
 |Distribution|[Arch Linux](https://archlinux.org)|- [x]|
-|Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)
-|Terminal|[Alacritty](https://github.com/alacritty/alacritty)
-|Shell|[Bash](https://www.gnu.org/software/bash)
-|File Manager|[Ranger](https://github.com/ranger/ranger)
-|System Info|[Neofetch](https://github.com/dylanaraps/neofetch)
-|Editor|[NeoVim](https://neovim.io)
-|Bar|[Polybar](https://github.com/polybar/polybar)
-|Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)
-|Messenger|[Telegram](https://telegram.org/)
-|Applications Launcher|[Rofi](https://github.com/davatorium/rofi)
-|Process Viewer|[Htop](https://htop.dev/)
-|Wallpapers Manager|[Feh](https://github.com/derf/feh)
-|Images Viewer|[Feh](https://github.com/derf/feh)
-|Videos Viewer|[MPV](https://mpv.io/)
-|Musics Viewer|[CMUS](https://github.com/cmus/cmus)
-|Screenshots|NONE
+|Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|
+|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
+|Shell|[Bash](https://www.gnu.org/software/bash)|
+|File Manager|[Ranger](https://github.com/ranger/ranger)|
+|System Info|[Neofetch](https://github.com/dylanaraps/neofetch)|
+|Editor|[NeoVim](https://neovim.io)|
+|Bar|[Polybar](https://github.com/polybar/polybar)|
+|Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)|
+|Messenger|[Telegram](https://telegram.org/)|
+|Applications Launcher|[Rofi](https://github.com/davatorium/rofi|
+|Process Viewer|[Htop](https://htop.dev/)|
+|Wallpapers Manager|[Feh](https://github.com/derf/feh)|
+|Images Viewer|[Feh](https://github.com/derf/feh)|
+|Videos Viewer|[MPV](https://mpv.io/)|
+|Musics Viewer|[CMUS](https://github.com/cmus/cmus)|
+|Screenshots|NONE|
 
 # INSTALL
 ## Disk partitioning and instaling of the basic system
@@ -86,7 +86,7 @@ Commands:
 ```
 
 ##### 8. Mounting an additional disk partition
-> ATTENTION!: The implementation of this paragraph is not necessary.
+> __ATTENTION!: The implementation of this paragraph is not necessary.__ <br/>
 > My system uses an additional disk for user files and installation of games, so I mount two more partitions.
 
 ```sh
@@ -460,7 +460,7 @@ Command:
 ```
 
 ##### 3. Creating links to folders from additional disk partitions
-> ATTENTION!: The implementation of this paragraph is not necessary.
+> __ATTENTION!: The implementation of this paragraph is not necessary.__ <br/>
 > My system uses an additional disk for user files and installing games, so I create links to user folders such as Documents, Downloads and others.
 
 ```sh
@@ -477,7 +477,7 @@ Commands:
 ```
 
 ##### 5. Copy the Xorg configuration files:
-> ATTENTION!:
+> __ATTENTION!__ <br/>
 > Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files
 
 ```sh
@@ -488,7 +488,7 @@ Commands:
 ```
 
 ##### 6. Copy the cursor icon theme:
-> ATTENTION!:
+> __ATTENTION!__ <br/>
 > Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files
 
 ```sh
@@ -526,7 +526,7 @@ Web interface:
 ```
 
 ##### 11. Autologin and Autostart Xorg via Systemd:
-> ATTENTION! <br/>
+> __ATTENTION!__ <br/>
 > Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files
 
 ```sh
