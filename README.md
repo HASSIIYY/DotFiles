@@ -1,22 +1,22 @@
 # INFO
 |Type|Name|Configuration|
 |:---:|:---:|:---:|
-|Distribution|[Arch Linux](https://archlinux.org)| - [x]
-|Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|
-|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
-|Shell|[Bash](https://www.gnu.org/software/bash)|
-|File Manager|[Ranger](https://github.com/ranger/ranger)|
-|System Info|[Neofetch](https://github.com/dylanaraps/neofetch)|
-|Editor|[NeoVim](https://neovim.io)|
+|Distribution|[Arch Linux](https://archlinux.org)|Added|
+|Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|Added|
+|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|Added|
+|Shell|[Bash](https://www.gnu.org/software/bash)|Absent|
+|File Manager|[Ranger](https://github.com/ranger/ranger)|Added|
+|System Info|[Neofetch](https://github.com/dylanaraps/neofetch)|Added|
+|Editor|[NeoVim](https://neovim.io)|Absent|
 |Bar|[Polybar](https://github.com/polybar/polybar)|
-|Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)|
-|Messenger|[Telegram](https://telegram.org/)|
-|Applications Launcher|[Rofi](https://github.com/davatorium/rofi)|
-|Process Viewer|[Htop](https://htop.dev/)|
-|Wallpapers Manager|[Feh](https://github.com/derf/feh)|
-|Images Viewer|[Feh](https://github.com/derf/feh)|
-|Videos Viewer|[MPV](https://mpv.io/)|
-|Musics Viewer|[CMUS](https://github.com/cmus/cmus)|
+|Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)|Added|
+|Messenger|[Telegram](https://telegram.org/)|Absent|
+|Applications Launcher|[Rofi](https://github.com/davatorium/rofi)|Added|
+|Process Viewer|[Htop](https://htop.dev/)|Added|
+|Wallpapers Manager|[Feh](https://github.com/derf/feh)|Added|
+|Images Viewer|[Feh](https://github.com/derf/feh)|Added|
+|Videos Viewer|[MPV](https://mpv.io/)|Absent|
+|Musics Viewer|[CMUS](https://github.com/cmus/cmus)|Absent|
 |Screenshots|NONE|
 
 # INSTALL
@@ -502,8 +502,8 @@ Edit a file:
 
 ##### 7. Disabling unnecessary application icons:
 > __ATTENTION!__ <br/>
-> For some applications I edit .desktop files, for more convenient interaction in the Rofi menu <br/>
-> For example, I change the name of some applications or add the item NoDisplay=true to disable the display of this application in the menu
+> For some applications I edit __.desktop__ files, for more convenient interaction in the Rofi menu. <br/>
+> For example, I change the name of some applications or add the item NoDisplay=true to disable the display of this application in the menu.
 
 ```sh
 Edit Files:
@@ -531,7 +531,7 @@ Web interface:
 
 ##### 11. Autologin and Autostart Xorg via Systemd:
 > __ATTENTION!__ <br/>
-> Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files
+> Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files.
 
 ```sh
 Command:
