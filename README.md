@@ -1,23 +1,23 @@
 # INFO
 |Type|Name|Configuration|
 |:---:|:---:|:---:|
-|Distribution|[Arch Linux](https://archlinux.org)|Added|
-|Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|Added|
-|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|Added|
+|Distribution|[Arch Linux](https://archlinux.org)|:white_check_mark:|
+|Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|:white_check_mark:|
+|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|:white_check_mark:|
 |Shell|[Bash](https://www.gnu.org/software/bash)|:x:|
-|File Manager|[Ranger](https://github.com/ranger/ranger)|Added|
-|System Info|[Neofetch](https://github.com/dylanaraps/neofetch)|Added|
-|Editor|[NeoVim](https://neovim.io)|Absent|
-|Bar|[Polybar](https://github.com/polybar/polybar)|
-|Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)|Added|
-|Messenger|[Telegram](https://telegram.org/)|Absent|
-|Applications Launcher|[Rofi](https://github.com/davatorium/rofi)|Added|
-|Process Viewer|[Htop](https://htop.dev/)|Added|
-|Wallpapers Manager|[Feh](https://github.com/derf/feh)|Added|
-|Images Viewer|[Feh](https://github.com/derf/feh)|Added|
-|Videos Viewer|[MPV](https://mpv.io/)|Absent|
-|Musics Viewer|[CMUS](https://github.com/cmus/cmus)|Absent|
-|Screenshots|NONE|
+|File Manager|[Ranger](https://github.com/ranger/ranger)|:clock4:|
+|System Info|[Neofetch](https://github.com/dylanaraps/neofetch)|:white_check_mark:|
+|Editor|[NeoVim](https://neovim.io)|:clock4:|
+|Bar|[Polybar](https://github.com/polybar/polybar)|:clock4:|
+|Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)|:white_check_mark:|
+|Messenger|[Telegram](https://telegram.org/)|:x:|
+|Applications Launcher|[Rofi](https://github.com/davatorium/rofi)|:white_check_mark:|
+|Process Viewer|[Htop](https://htop.dev/)|:white_check_mark:|
+|Wallpapers Manager|[Feh](https://github.com/derf/feh)|:clock4:|
+|Images Viewer|[Feh](https://github.com/derf/feh)|:clock4:|
+|Videos Viewer|[MPV](https://mpv.io/)|:clock4:|
+|Musics Viewer|[CMUS](https://github.com/cmus/cmus)|:clock4:|
+|Screenshots|NONE|:x:|
 
 # INSTALL
 ## Disk partitioning and instaling of the basic system
