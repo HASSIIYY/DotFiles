@@ -79,6 +79,7 @@ Commands:
 	mkdir /mnt/home
 	mount -o rw,noatime,nodatacow,max_inline=256,compress=zstd:3,ssd,ssd_spread,discard=async,space_cache=v2,commit=120,subvol=@home /dev/"Fourth disk partition" /mnt/home
 
+	mkswap /dev/"Third disk partition"
 
 	mkdir /mnt/boot
 	mkdir /mnt/boot/EFI
