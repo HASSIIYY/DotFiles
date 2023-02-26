@@ -4,7 +4,7 @@
 |Distribution|[Arch Linux](https://archlinux.org)|Added|
 |Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|Added|
 |Terminal|[Alacritty](https://github.com/alacritty/alacritty)|Added|
-|Shell|[Bash](https://www.gnu.org/software/bash)|Absent|
+|Shell|[Bash](https://www.gnu.org/software/bash)|:x:|
 |File Manager|[Ranger](https://github.com/ranger/ranger)|Added|
 |System Info|[Neofetch](https://github.com/dylanaraps/neofetch)|Added|
 |Editor|[NeoVim](https://neovim.io)|Absent|
