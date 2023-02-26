@@ -1,7 +1,7 @@
 # INFO
 |Type|Name|Configuration|
 |:---:|:---:|:---:|
-|Distribution|[Arch Linux](https://archlinux.org)|- [x]|
+|Distribution|[Arch Linux](https://archlinux.org)| - [x]
 |Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|
 |Terminal|[Alacritty](https://github.com/alacritty/alacritty)|
 |Shell|[Bash](https://www.gnu.org/software/bash)|
@@ -11,7 +11,7 @@
 |Bar|[Polybar](https://github.com/polybar/polybar)|
 |Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)|
 |Messenger|[Telegram](https://telegram.org/)|
-|Applications Launcher|[Rofi](https://github.com/davatorium/rofi|
+|Applications Launcher|[Rofi](https://github.com/davatorium/rofi)|
 |Process Viewer|[Htop](https://htop.dev/)|
 |Wallpapers Manager|[Feh](https://github.com/derf/feh)|
 |Images Viewer|[Feh](https://github.com/derf/feh)|
@@ -501,6 +501,10 @@ Edit a file:
 ```
 
 ##### 7. Disabling unnecessary application icons:
+> __ATTENTION!__ <br/>
+> For some applications I edit .desktop files, for more convenient interaction in the Rofi menu <br/>
+> For example, I change the name of some applications or add the item NoDisplay=true to disable the display of this application in the menu
+
 ```sh
 Edit Files:
 	sudo ranger:
@@ -532,6 +536,7 @@ Web interface:
 ```sh
 Command:
 	sudo cp .../DotFiles/Misc/x11-autologin.service /etc/systemd/system
+	sudo systemctl enable x11-autologin
 ```
 
 ## Configuring SSH Keys
