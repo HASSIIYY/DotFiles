@@ -3,6 +3,7 @@
 |:---:|:---:|:---:|
 |Distribution|[Arch Linux](https://archlinux.org)|:white_check_mark:|
 |Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|:white_check_mark:|
+|Window Composer|[Picom](https://github.com/yshui/picom)|:white_check_mark:|
 |Terminal|[Alacritty](https://github.com/alacritty/alacritty)|:white_check_mark:|
 |Shell|[Bash](https://www.gnu.org/software/bash)|:x:|
 |File Manager|[Ranger](https://github.com/ranger/ranger)|:clock4:|
@@ -72,6 +73,8 @@ Commands:
 ```
 
 ##### 7. Mount the subvolumes and partitions
+> __ATTENTION!__
+> The __SSD, SSD_SPREAD__ and __NODATACOW__ parameters are designed to work with SSD drives, do not add them if you have a hard drive.
 ```sh
 Commands:
 	mount -o rw,noatime,nodatacow,max_inline=256,compress=zstd:3,ssd,ssd_spread,discard=async,space_cache=v2,commit=120,subvol=/@ /dev/"Fourth disk partition" /mnt
@@ -79,7 +82,7 @@ Commands:
 	mkdir /mnt/home
 	mount -o rw,noatime,nodatacow,max_inline=256,compress=zstd:3,ssd,ssd_spread,discard=async,space_cache=v2,commit=120,subvol=@home /dev/"Fourth disk partition" /mnt/home
 
-	mkswap /dev/"Third disk partition"
+	swapon /dev/"Third disk partition"
 
 	mkdir /mnt/boot
 	mkdir /mnt/boot/EFI
@@ -92,13 +95,15 @@ Commands:
 
 ```sh
 Commands:
-	mkdir /mnt/home/"Username"
-	mkdir /mnt/home/.Instalations
-	mount -o rw,max_inline=256,noatime,compress=zstd:3,discard=async,space_cache=v2,commit=120,subvol=/ /dev/"Additional disk partition" /mnt/home/"Username"
-	mount -o rw,max_inline=256,noatime,compress=zstd:3,discard=async,space_cache=v2,commit=120,subvol=/ /dev/"Additional disk partition" /mnt/home/.Instalations
+	mkdir /mnt/run
+	mkdir /mnt/run/media
+	mkdir /mnt/run/media/HardDisk
+	mkdir /mnt/run/media/Instalations
+	mount -o rw,max_inline=256,noatime,compress=zstd:3,discard=async,space_cache=v2,commit=120,subvol=/ /dev/"Additional disk partition" /mnt/run/media/HardDisk
+	mount -o rw,max_inline=256,noatime,compress=zstd:3,discard=async,space_cache=v2,commit=120,subvol=/ /dev/"Additional disk partition" /mnt/run/media/Instalations
 ```
 
-##### 8. Connecting to WiFi
+##### 9. Connecting to WiFi
 ```sh
 Command:
 	iwctl:
@@ -106,14 +111,14 @@ Command:
 	    ping archlinux.org -c2  # Checing the network connection
 ```
 
-##### 9. Installing the basic system
+##### 10. Installing the basic system
 ```sh
 Commands:
 	pacman -Sy archlinux-keyring
-	pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware dosfstools btrfs-progs intel-ucode iucode-tool grub efibootmgr dhcpcd dhclient networkmanager network-manager-applet alsa-lib alsa-lib-devel alsa-plugins alsa-tools alsa-utils git neovim
+	pacstrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware dosfstools btrfs-progs intel-ucode iucode-tool grub efibootmgr dhcpcd dhclient networkmanager network-manager-applet alsa-lib alsa-plugins alsa-tools alsa-utils git neovim
 ```
 
-##### 10. Creating a file system configuration file
+##### 11. Creating a file system configuration file
 ```sh
 Commands:
 	genfstab -U /mnt >> /mnt/etc/fstab
@@ -132,7 +137,7 @@ Command:
 ```sh
 Commands:
 	ln -sf /usr/share/zoneinfo/Europe/"City of residence" /etc/localtime
-	hwclock -w
+	hwclock --systohc
 ```
 
 ##### 3. Localize the system
@@ -176,15 +181,21 @@ Add a new file:
 ```
 
 ##### 8. Creating a kernel image for RAM
+> __ATTENTION!__ <br/>
+> We use the -P key  if one kernel is installed in the system, otherwise -p "Desired kernel" (for example linus-zen).
+
 ```sh
 Command:
-	mkinitcpio -P	# We use the -P key  if one kernel is installed in the system, otherwise -p "Desired kernel" (for example linus-zen).
+	mkinitcpio -P
 ```
 
 ##### 9. Setting the root password
+> __ATTENTION!__ <br/>
+> The password the enterrd, but not displayed.
+
 ```sh
 Command:
-	passwd	# The password the enterrd, but not displayed.
+	passwd
 ```
 
 ##### 10. Instaling and configure the bootloader
@@ -199,6 +210,7 @@ Commands:
 Commands:
 	exit
 	umount -R /mnt
+	swapoff /dev/"Third disk partition"
 ```
 
 ##### 12. Reboot into our system
@@ -251,6 +263,9 @@ Command:
 ```
 
 ##### 7. Connectin to the internet via WiFi
+> __ATTENTION!:__ <br/>
+> If you have a wired internet connection, then you can skip this point.
+
 ```sh
 Commands:
 	sudo nmcli d wifi connect "WiFi Name" password "WiFi Password"
@@ -272,13 +287,13 @@ Commands:
 	Nvidia:
 		sudo pacman -Syu nvidia-dkms nvidia-utils lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulcan-icd-loader opencl-nvidia lib32-opencl-nvidia libxnvctrl
 	Intel:
-		sudo pacman -Syu lib32-mesa vulkan-intel lib32-vulkan-intel libva-intel-driver xf86-video-intel mesa-utils
+		sudo pacman -Syu mesa-demos lib32-mesa  vulkan-intel lib32-vulkan-intel libva-intel-driver xf86-video-intel mesa-utils
 ```
 
 ##### 10. Rebooting
 ```sh
 Command:
-	reboot
+	sudo reboot
 ```
 
 
@@ -292,15 +307,18 @@ Edit a file:
 ```
 
 ##### 2. Reassembling Initramfs
+> __ATTENTION!__ <br/>
+> We use the -P key  if one kernel is installed in the system, otherwise -p "Desired kernel" (for example linus-zen).
+
 ```sh
 Command:
-	sudo mkinitcpio -P	# We use the -P key  if one kernel is installed in the system, otherwise -p "Desired kernel" (for example linus-zen).
+	sudo mkinitcpio -P
 ```
 
 ##### 3. Rebooting
 ```sh
 Command:
-	reboot
+	sudo reboot
 ```
 
 
@@ -308,7 +326,8 @@ Command:
 ##### 1. Download and assemble the yay package
 ```sh
 Commands:
-	cd Downloads
+	mkdir Tools 
+	cd Tools
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
 	makepkg -sric
@@ -316,15 +335,18 @@ Commands:
 ```
 
 ##### 2. Instaling the Nvidia Tweaks
+> __ATTENTION!__ <br/>
+> This item is intended for users who have an Nvidia graphics card.
+
 ```sh
 Commands:
-	yay nvidia-tweaks
+	yay -S nvidia-tweaks
 ```
 
 ##### 3. Installing Ananicy
 ```sh
 Commands:
-	yay ananicy
+	yay -S ananicy-git
 	sudo systemctl enable ananicy
 ```
 
@@ -332,7 +354,7 @@ Commands:
 ```sh
 Commands:
 	sudo pacman -S haveged
-	sudo systemctl evable haveged
+	sudo systemctl enable haveged
 ```
 
 ##### 5. Enabling the Trim service
@@ -343,17 +365,17 @@ Command:
 ```
 
 
-##### 6. Instaling Dbus-broker
+##### 6. Instaling D-Bus-Broker
 ```sh
 Commands:
 	sudo pacman -S dbus-broker
-	sudo systemctl enable dbus-broker.service
+	sudo systemctl enable dbus-broker
 ```
 
 ##### 7. Disabling NetworkManager-wait-online
 ```sh
 Commnad:
-	sudo systemctl mask NetworkManager-wait-online.service
+	sudo systemctl mask NetworkManager-wait-online
 ```
 
 ##### 8. System load optimization
@@ -374,7 +396,7 @@ Command:
 ##### 9. Rebooting
 ```sh
 Command:
-	reboot
+	sudo reboot
 ```
 
 
@@ -382,7 +404,7 @@ Command:
 ##### 1. Install backup program
 ```sh
 Command:
-	yay timmeshift
+	yay -S timmeshift
 ```
 
 ##### 2. Initializing the TimeShift in BTRFS mode
@@ -402,46 +424,49 @@ Command:
 ##### 1. Installing BSPWM and its dependencies:
 ```sh
 Command:
-    sudo pacman -Sy bspwm sxhkd xorg-server xorg-xinit xorg-xrandr picom nvidia-prime
+	sudo pacman -Sy bspwm sxhkd xorg-server-utils xorg-xinit picom nvidia-prime
 ```
 
 ##### 2. Installing bluetooth modules:
 ```sh
 Commands:
-    sudo pacman -Sy bluez bluez-utils
+	sudo pacman -Sy bluez bluez-utils
 	sudo systemctl enable bluetooth
 ```
 
 ##### 3. Installing Fonts:
 ```sh
 Command:
-    sudo pacman -Sy ttf-font-awesome ttf-ubuntu-font-family ttf-jetbrains-mono-nerd
+	sudo pacman -Sy ttf-font-awesome ttf-ubuntu-font-family ttf-jetbrains-mono-nerd
 ```
 ##### 4. Installing the Sound System Assistant:
 ```sh
 CommandS:
-    sudo pacman -Sy pulseaudio pulseaudio-alsa pulseaudio-bluetooth
+	sudo pacman -Sy pulseaudio pulseaudio-alsa pulseaudio-bluetooth
 	yay -S pulseaudio-control
 ```
 
 ##### 5. Installing programs:
 ```sh
 Command:
-	sudo pacman -S alacritty ranger rofi polybar neofetch htop unzip cmus feh mpv firefox telegram-desktop
+	sudo pacman -Sy alacritty ranger rofi polybar neofetch htop unzip cmus feh mpv firefox telegram-desktop
 ```
 
 ##### 6. Installing program dependencies:
 ```sh
 Command:
-    sudo pacman -Sy wmctrl pacman-contrib xclip acpilight xf86-input-synaptics python-pip ueberzug fmpegthumbnailer
+	sudo pacman -Sy wmctrl pacman-contrib xorg-xsetroot xclip acpilight xf86-input-synaptics python-pip ueberzug ffmpegthumbnailer
 ```
 
 ##### 7. Installing Printer Drivers:
+> __ATTENTION!__ <br/>
+> My printer is a Pantum brand, so I'm installing a driver for this brand, you probably have a different brand.
+
 ```sh
 Commands:
-	sudo pacman -S cups cups-pdf simple-scan
+	sudo pacman -Sy cups cups-pdf simple-scan
 	sudo systemctl enable cups
-	yay pantum  # ATTENTION!: My printer is a Pantum brand, so I'm installing a driver for this brand, you probably have a different brand.
+	yay pantum
 ```
 
 
@@ -460,21 +485,22 @@ Command:
 	groups "Username"   # We check the groups to which our user has been added
 ```
 
-##### 3. Creating links to folders from additional disk partitions
+##### 3. Changing the owner of folders and files
+> __ATTENTION!__ <br/>
+> Since these folders were created from under the Root user, they and all attached files and folders belong to him.
+
+```sh
+Commands:
+    sudo chown "UserName":"UserName" -R /run/media
+```
+
+##### 4. Creating links to folders from additional disk partitions
 > __ATTENTION!: The implementation of this paragraph is not necessary.__ <br/>
 > My system uses an additional disk for user files and installing games, so I create links to user folders such as Documents, Downloads and others.
 
 ```sh
 Commands:
     ln -sf /run/media/HardDisk/"Folder_Name" /home/"UserName"/"FolderName"
-```
-
-##### 4. Changing the owner of folders and files
-```sh
-Commands:
-    # Since these folders were created from under the Root user, they and all attached files and folders belong to him
-    sudo chown "UserName":"UserName" -R /home/"Username"
-    sudo chown "UserName":"UserName" -R /home/.Instalations
 ```
 
 ##### 5. Copy the Xorg configuration files:
@@ -544,14 +570,14 @@ Command:
 ##### 1. Creating an SSH key
 ```sh
 Commands:
-    mkdir ~/.ssh && cd ~/.ssh
-    ssh-keygen  # At this stage, you can choose an arbitrary name for your SSH key
+	mkdir ~/.ssh && cd ~/.ssh
+	ssh-keygen -f "Name_Key_File" 
 ```
 
 ##### 2. Adding an SSH key to a GitHub account
 ```sh
 Command:
-    cat ~/.ssh/"Key_Name"   # At this stage we need to read the private key (without extension.pub)
+	cat ~/.ssh/"Key_Name".pub
 
 Action:
     Copy the output of the previous command to:
@@ -561,8 +587,8 @@ Action:
 ##### 3. Adding a Git Account
 ```sh
 Commands:
-    git config --global user.name "UserName"
-    git config --global user.email "Email@example.com"
+	git config --global user.name "UserName"
+	git config --global user.email "Email@example.com"
 ```
 
 ## Installing add-ons for files and programs
@@ -578,4 +604,11 @@ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```sh
 Command:
 	:PlugInstall	# Apply the command in the editor.
+```
+
+#### Configuring Ranger
+##### 1. Integrating Ranger-Devicons:
+```sh
+Command:
+	git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 ```
