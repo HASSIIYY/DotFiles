@@ -54,6 +54,15 @@ git add *.txt   # Index all text files
 ```sh
 git add .       # Indexing all files
 ```
+
+##### Remove file indexing
+```sh
+git restore --staged *.txt	# Remove indexing of all text files
+```
+```sh
+git restore --staged .			# Remove indexing of all files
+```
+
 ##### Creating a commit
 ```sh
 git commit -m "Comment"

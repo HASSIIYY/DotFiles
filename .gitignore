@@ -1,0 +1,6 @@
+# Ignore plugin installation folders
+## Ranger
+Configs/ranger/plugins
+
+## NeoVim
+Configs/nvim/plugged
