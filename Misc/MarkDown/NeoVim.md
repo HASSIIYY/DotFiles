@@ -8,3 +8,8 @@
 - __:TerminalTab <command>__ - Open a terminal in a new Tab
 - __:TerminalSplit <command>__ - Open a terminal with Tab split horizontally
 - __:TerminalVSplit <command>__ - Open a terminal with Tab split vertically
+
+### NeoVim Treesitter
+- __:TSInstall <language_to_install>__ - Installing the Tree Sitter language model
+- __:TSInstallInfo__ - Information on installed language models
+- __:TSUpdate__ - Updating language models

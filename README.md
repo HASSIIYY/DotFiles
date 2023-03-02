@@ -455,7 +455,7 @@ Command:
 ##### 6. Installing program dependencies:
 ```sh
 Command:
-	sudo pacman -Sy wmctrl pacman-contrib xorg-xsetroot xclip acpilight xf86-input-synaptics python-pip ueberzug ffmpegthumbnailer
+	sudo pacman -Sy wmctrl pacman-contrib xorg-xsetroot xclip ctags acpilight xf86-input-synaptics python-pip ueberzug ffmpegthumbnailer
 	pip install neovim
 ```
 
@@ -601,10 +601,17 @@ Command:
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 ```
 
-##### 2. Installing Vim Plugins:
+##### 2. Installing Plugins:
 ```sh
 Command:
 	:PlugInstall	# Apply the command in the editor.
+```
+
+##### 3. Installing Tree Sitter Language Models
+```sh
+Command:
+	:TSInstall <language_to_install>:
+		bash c cpp lua markdown python vim
 ```
 
 #### Configuring Ranger
