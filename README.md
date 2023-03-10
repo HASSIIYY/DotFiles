@@ -557,22 +557,39 @@ Web interface:
 	http://localhost:631/
 ```
 
-##### 11. Autologin and Autostart Xorg via Systemd:
+
+## Autologin and Autostart Xorg via Systemd:
+##### 1. Adding an Xorg autostart
+```sh
+Edit a file:
+	nvim .bash_profile:
+		[[ -z $DISPLAY && $XDG_VTNR -eq NomerVirtConsole ]] && exec startx
+```
+
+##### 2. Adding an autologin
 > __ATTENTION!__ <br/>
 > Instead of a colon, paste the path to the cloned DotFiles folder, or to the one where you copied the repository files.
 
 ```sh
-Command:
-	sudo cp .../DotFiles/Misc/x11-autologin.service /etc/systemd/system
-	sudo systemctl enable x11-autologin
+Commands:
+	sudo mkdir /etc/systemd/system/getty@tty1.service.d
+	sudo cp .../DotFiles/Misc/override.conf /etc/systemd/system/getty@tty1.service.d
 ```
+
+##### 3. Editing the autologin file
+```sh
+Edit a file:
+	sudo nvim /etc/systemd/system/getty@tty1.service.d/override.conf:
+		"UserName" -> Your name
+```
+
 
 ## Configuring SSH Keys
 ##### 1. Creating an SSH key
 ```sh
 Commands:
 	mkdir ~/.ssh && cd ~/.ssh
-	ssh-keygen -f "Name_Key_File" 
+	ssh-keygen -f "Name_Key_File"
 ```
 
 ##### 2. Adding an SSH key to a GitHub account
