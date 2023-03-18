@@ -1,0 +1,121 @@
+######################################
+####   BASIC ALACRITTY SETTINGS   ####
+######################################
+
+window:
+  # The amount of margins inside the window
+  padding:
+    x: 7
+    y: 5
+
+# The amount of reverse scrolling
+scrolling:
+  history: 2500
+
+# When true, bold text is drawn using the bright variant of colors
+draw_bold_text_with_bright_colors: true
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+env:
+  TERM: alacritty
+
+
+######################################
+####     FONT CONFIGURAITONS      ####
+######################################
+
+font:
+  # Normal (roman) font face
+  normal:
+    family: JetBrains Mono Nerd Font
+    style: Regular
+
+  # Bold font face
+  bold:
+    family: JetBrains Mono Nerd Font
+    style: Bold
+
+  # Italic font face
+  italic:
+    family: JetBrains Mono Nerd Font
+    style: Italic
+
+  bold_italic:
+    family: JetBrains Mono Nerd Font
+    style: Bold Italic
+
+  size: 7.5
+
+
+######################################
+####        MOUSE SETTINGS        ####
+######################################
+
+# Configuring Mouse Actions
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+# The values of multiple mouse clicks in milliseconds
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+
+
+######################################
+####      SELECTION SETTINGS      ####
+######################################
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+  # When set to `true`, selected text will be copied to both the primary
+  # and the selection clipboard. Otherwise, it will only be copied to
+  # the selection clipboard.
+  save_to_clipboard: true
+
+
+######################################
+####           COLORS             ####
+######################################
+
+colors:
+  # Default colors
+  primary:
+      background: '#1d2021'
+      foreground: '#d4be98'
+
+  # Normal colors
+  normal:
+      black:   '#32302f'
+      red:     '#ea6962'
+      green:   '#a9b665'
+      yellow:  '#d8a657'
+      blue:    '#7daea3'
+      magenta: '#d3869b'
+      cyan:    '#89b482'
+      white:   '#d4be98'
+      grey:    '#7c6f64'
+
+  # Bright colors
+  bright:
+      black:   '#32302f'
+      red:     '#ea6962'
+      green:   '#a9b665'
+      yellow:  '#d8a657'
+      blue:    '#7daea3'
+      magenta: '#d3869b'
+      cyan:    '#89b482'
+      white:   '#d4be98'
+
+
+
+######################################
+####         KEY BINDINGS         ####
+######################################
+
+key_bindings:
+  - { key: Space,   mods: Super|Shift, action: SpawnNewInstance }
+  - { key: V, mods: Control, action: Paste }
+  - { key: C, mods: Control, action: Copy }

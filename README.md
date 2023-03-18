@@ -456,7 +456,7 @@ Command:
 ```sh
 Command:
 	sudo pacman -Sy wmctrl pacman-contrib xorg-xsetroot xclip ctags acpilight xf86-input-synaptics python-pip ueberzug ffmpegthumbnailer
-	pip install neovim
+	pip install neovim python-imap
 ```
 
 ##### 7. Installing Printer Drivers:
@@ -467,7 +467,7 @@ Command:
 Commands:
 	sudo pacman -Sy cups cups-pdf simple-scan
 	sudo systemctl enable cups
-	yay pantum
+	yay -S pantum-driver
 ```
 
 
