@@ -2,6 +2,7 @@
 ### NeoVim Service
 - __:checkhealth__ - Check NeoVim for errors
 - __:help <command/object>__ - Command or Object Help
+- __:so %__ - Reread the file
 
 ### NeoVim Terminal
 - __:Terminal <command>__ - Open a terminal in the same Tab

@@ -1,0 +1,80 @@
+! Config by: https://github.com/HASSIIYY
+
+
+!# CONFIGURATION HELP
+
+! To apply the parameter to all applications, use the following syntax:
+!		*<Parameter>: <Value>
+!	Example: *background:	#1d2021
+
+! To apply a parameter to a specific application, use the following syntax:
+!		<Application>.<Class>.<Parameter>: <Value>
+!	Example: UXTerm.vt100.background:	#1d2021
+
+
+!#####################################
+!###    BASIC UXTERM SETTINGS     ####
+!#####################################
+
+! Correct terminal message about the TERM variable
+! Available values: xterm, xterm-256color
+UXTerm.termName: xterm-256color
+
+! Using the system-wide clipboard
+UXTerm.vt100.selectToClipboard: true
+
+! The number of scroll lines to remember
+UXTerm.vt100.saveLines: 2500
+
+! Redefining the line spacing
+! Available values: 0.9 - 1.5
+! Default value: 1.0
+UXTerm.scaleHeight: 1.0
+UXTerm.internalBorder: 7
+
+!#####################################
+!###     FONT CONFIGURAITONS      ####
+!#####################################
+
+*faceName: JetBrains Mono Nerd Font:style=Regular
+*boldFont: JetBrains Mono Nerd Font:style=Bold
+*faceSize: 12
+
+
+!#####################################
+!###           COLORS             ####
+!#####################################
+
+! Primary Colors
+*background:	#1d2021
+*foreground:	#d4be98
+
+! Normal Colors
+*color0:	#504945
+*color1:	#ea6962
+*color2:	#a9b665
+*color3:	#d8a657
+*color4:	#7daea3
+*color5:	#d3869b
+*color6:	#89b482
+*color7:	#7c6f64
+
+# Bright colors
+*color8:	#32302f
+*color9:	#ea6962
+*color10:	#a9b665
+*color11:	#d8a657
+*color12:	#7daea3
+*color13:	#d3869b
+*color14:	#89b482
+*color15:	#928374
+
+
+!#####################################
+!###         KEY BINDINGS         ####
+!#####################################
+
+! The #override parameter indicates overwriting of existing keyboard shortcuts
+UXTerm.vt100.translations: #override \n\
+	Ctrl <Key>C: copy-selection(CLIPBOARD) \n\
+	Ctrl <Key>V: insert-selection(CLIPBOARD)

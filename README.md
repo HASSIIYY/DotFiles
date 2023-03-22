@@ -4,13 +4,13 @@
 |Distribution|[Arch Linux](https://archlinux.org)|:white_check_mark:|
 |Window Manager|[BSPWM](https://github.com/baskerville/bspwm) + [SXHKD](https://github.com/baskerville/sxhkd)|:white_check_mark:|
 |Window Composer|[Picom](https://github.com/yshui/picom)|:white_check_mark:|
-|Terminal|[Alacritty](https://github.com/alacritty/alacritty)|:white_check_mark:|
+|Terminal|[UXTerm](https://wiki.archlinux.org/title/Xterm)|:white_check_mark:|
 |Shell|[Bash](https://www.gnu.org/software/bash)|:x:|
 |File Manager|[Ranger](https://github.com/ranger/ranger)|:clock4:|
 |System Info|[Neofetch](https://github.com/dylanaraps/neofetch)|:white_check_mark:|
 |Editor|[NeoVim](https://neovim.io)|:clock4:|
 |Bar|[Polybar](https://github.com/polybar/polybar)|:clock4:|
-|Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)|:white_check_mark:|
+|Browser|[Firefox](https://www.mozilla.org/ru/firefox/new/)|:x:|
 |Messenger|[Telegram](https://telegram.org/)|:x:|
 |Applications Launcher|[Rofi](https://github.com/davatorium/rofi)|:white_check_mark:|
 |Process Viewer|[Htop](https://htop.dev/)|:white_check_mark:|
@@ -326,7 +326,7 @@ Command:
 ##### 1. Download and assemble the yay package
 ```sh
 Commands:
-	mkdir Tools 
+	mkdir Tools
 	cd Tools
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
@@ -449,7 +449,7 @@ CommandS:
 ##### 5. Installing programs:
 ```sh
 Command:
-	sudo pacman -Sy alacritty ranger rofi polybar neofetch htop unzip cmus feh mpv firefox telegram-desktop
+	sudo pacman -Sy ranger rofi polybar neofetch htop unzip cmus feh mpv firefox xterm telegram-desktop
 ```
 
 ##### 6. Installing program dependencies:
