@@ -4,7 +4,7 @@
 
 # Terminal emulator
 super + space
-	alacritty
+	uxterm
 
 # Program launcher
 super + Return

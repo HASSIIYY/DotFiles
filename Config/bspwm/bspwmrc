@@ -4,7 +4,7 @@
 picom &
 xsetroot -cursor_name left_ptr &
 $HOME/.config/polybar/launch.sh &
-$HOME/.fehbg &
+sh $HOME/.fehbg &
 
 
 ## WORKSPACE
@@ -12,8 +12,8 @@ bspc monitor -d I II III IV V VI VII VIII IX X
 
 
 ## FRAMES AND GAPS
-bspc config border_width         2
-bspc config window_gap          12
+bspc config border_width	2
+bspc config window_gap		12
 
 bspc config normal_border_color		"#2B2F30"
 bspc config active_border_color		"#2B2F30"
@@ -29,8 +29,7 @@ bspc config split_ratio		0.5
 
 
 ## WINDOW FOCUS BY HOVERING THE CURSOR
-bspc config focus_follows_pointer	true
-bspc config pointer_modifier		mod4
+bspc config focus_follows_pointer		true
 
 
 ## MONOCLE MODE WHEN ONE WINDOW IS OPEN
@@ -42,12 +41,9 @@ bspc config borderless_monocle   false
 bspc config gapless_monocle      false
 
 
+## POINTER ACTION
+bspc config pointer_modifier	mod4
+
+
 ## WINDOW RULES
-bspc rule -a feh state=floating follow=on
-bspc rule -a dragon-term hidden=on focus=off
-bspc rule -a dragon-drop focus=off
-#bspc rule -a Gimp desktop='^8' state=floating follow=on
-#bspc rule -a Chromium desktop='^2'
-#bspc rule -a mplayer2 state=floating
-#bspc rule -a Kupfer.py focus=on
-#bspc rule -a Screenkey manage=off
+bspc rule -a feh state=floating center=on

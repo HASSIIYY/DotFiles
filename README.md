@@ -14,8 +14,8 @@
 |Messenger|[Telegram](https://telegram.org/)|:x:|
 |Applications Launcher|[Rofi](https://github.com/davatorium/rofi)|:white_check_mark:|
 |Process Viewer|[Htop](https://htop.dev/)|:white_check_mark:|
-|Wallpapers Manager|[Feh](https://github.com/derf/feh)|:clock4:|
-|Images Viewer|[Feh](https://github.com/derf/feh)|:clock4:|
+|Wallpapers Manager|[Feh](https://github.com/derf/feh)|:white_check_mark:|
+|Images Viewer|[Feh](https://github.com/derf/feh)|:white_check_mark:|
 |Videos Viewer|[MPV](https://mpv.io/)|:clock4:|
 |Musics Viewer|[CMUS](https://github.com/cmus/cmus)|:clock4:|
 |Screenshots|NONE|:x:|
@@ -605,7 +605,7 @@ Action:
 ##### 3. Adding a Git Account
 ```sh
 Commands:
-	git config --global user.name "UserName"
+	git config --global user.name	 "UserName"
 	git config --global user.email "Email@example.com"
 ```
 

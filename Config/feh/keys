@@ -1,0 +1,19 @@
+# Examples for vim-like menu bindings on a qwerty keyboard:
+menu_parent h
+menu_child  l
+menu_down   j
+menu_up     k
+menu_select Return
+
+# Same for image navigation ...
+next_img l
+prev_img h
+
+# remove now conflicts with toggle_filenames, so change that
+toggle_filenames m
+
+# zooming
+zoom_in  k
+zoom_out j
+zoom_default d
+zoom_fit s
