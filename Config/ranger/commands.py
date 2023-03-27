@@ -1993,17 +1993,3 @@ class paste_ext(Command):
         return self.fm.paste(make_safe_path=paste_ext.make_safe_path)
 
 
-
-# Drag-And-Drop implementation in Ranger
-from threading import Thread
-
-class dragon(Command):
-
-    def execute(self):
-        th = Thread(target=self.dragondaemon, daemon=True)
-        th.start()
-        th.join()
-
-    def dragondaemon(self):
-        arguments = 'alacritty --class dragon-term -e dragon-daemon {}'.format(" ".join(self.args[1:]))
-        self.fm.execute_command(arguments)
