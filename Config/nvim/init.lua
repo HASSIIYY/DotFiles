@@ -10,3 +10,7 @@ require('base.tabs')					-- Tab Parameters
 
 --[[ Connecting Hotkey Modules ]]--
 require('keys.main')						-- The main hotkey module
+
+
+--[[ Connecting Plugins Modules ]]--
+require('plugins.packer')	-- Module Packer.nvim
