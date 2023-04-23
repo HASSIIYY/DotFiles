@@ -3,7 +3,7 @@
 Config/ranger/plugins
 
 ## NeoVim
-Config/nvim/plugged
+Config/nvim/plugin
 
 ## Cmus
 Config/cmus/playlists
