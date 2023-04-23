@@ -611,24 +611,23 @@ Commands:
 
 ## Installing add-ons for files and programs
 #### Configuring NeoVim
-##### 1. Integrating Vim-Plug:
+##### 1. Integrating Packer.nvim:
 ```sh
 Command:
-	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	yay -S nvim-packer-git
 ```
 
 ##### 2. Installing Plugins:
 ```sh
 Command:
-	:PlugInstall	# Apply the command in the editor.
+	:PackerSync	# Apply the command in the editor.
 ```
 
 ##### 3. Installing Tree Sitter Language Models
 ```sh
 Command:
 	:TSInstall <language_to_install>:
-		bash c cpp lua markdown python vim
+		bash c cpp lua markdown python
 ```
 
 #### Configuring Ranger

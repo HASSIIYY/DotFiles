@@ -47,3 +47,5 @@ bspc config pointer_modifier	mod4
 
 ## WINDOW RULES
 bspc rule -a feh state=floating center=on
+bspc rule -a firefox desktop=^1 focus=on
+bspc rule -a mpv state=floating center=on

@@ -4,3 +4,10 @@ Config/ranger/plugins
 
 ## NeoVim
 Config/nvim/plugged
+
+## Cmus
+Config/cmus/playlists
+Config/cmus/cache
+Config/cmus/command-history
+Config/cmus/lib.pl
+Config/cmus/search-history

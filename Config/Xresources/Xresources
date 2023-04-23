@@ -12,6 +12,7 @@
 !	Example: UXTerm.vt100.background:	#1d2021
 
 
+
 !#####################################
 !###    BASIC UXTERM SETTINGS     ####
 !#####################################
@@ -59,7 +60,7 @@ UXTerm.vt100.internalBorder: 7
 *color6:	#89b482
 *color7:	#7c6f64
 
-# Bright colors
+! Bright colors
 *color8:	#32302f
 *color9:	#ea6962
 *color10:	#a9b665

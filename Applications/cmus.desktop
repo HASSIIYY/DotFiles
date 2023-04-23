@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Cmus
+GenericName=Music Player
+Comment=C Music Player
+Icon=utilities-terminal
+Terminal=true
+Exec=cmus
+Categories=ConsoleOnly;System;FileTools;FileManager
+MimeType=inode/directory;

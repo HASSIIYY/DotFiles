@@ -19,8 +19,8 @@ super + Return
 super + Escape
 	bspc quit
 
-# Quit/Restart BSPWM
-shift + super + r; {b,s}
+# Restart BSPWM/SXHKD
+super + shift + r; {b,s}
 	bspc {wm -r, pkill -USR1 -x sxhkd}
 
 # Close or kill process
@@ -28,7 +28,7 @@ super + {_, shift + }n
 	bspc node -{c,k}
 
 # Switching to monocle mode and back
-super + m
+super+ m
 	bspc desktop -l next
 
 # Swap the current and the biggest window
@@ -54,12 +54,17 @@ F11
 ################################################
 
 # Focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
+alt + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # Focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# Focus or send to the previous/next desktop
+super + {_,shift + }{h,l}
+	bspc {desktop -f,node -d} {prev.local,next.local}
+
 
 
 ################################################
@@ -67,11 +72,11 @@ super + {_,shift + }{1-9,0}
 ################################################
 
 # Preselect the direction in which a new window will open
-super + alt + {h,j,k,l}
+alt + shift + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # Cancel the preselection for the focused node
-super + ctrl + space
+alt + shift + space
 	bspc node -p cancel
 
 
