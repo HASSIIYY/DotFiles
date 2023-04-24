@@ -10,7 +10,10 @@ require('base.tabs')					-- Tab Parameters
 
 --[[ Connecting Hotkey Modules ]]--
 require('keys.main')						-- The main hotkey module
+require('keys.plugins.cmp')			-- Keyboard shortcuts for the autocomplete module
 
 
 --[[ Connecting Plugins Modules ]]--
-require('plugins.packer')	-- Module Packer.nvim
+require('plugins.packer')							-- Module Packer.nvim
+require('plugins.configs.cmp')				-- Module Completion Plugin
+require('gruvbox-material').setup()		-- Applying a color scheme

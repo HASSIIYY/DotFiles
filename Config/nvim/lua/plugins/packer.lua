@@ -44,13 +44,28 @@ return require('packer').startup(function(use)
 		use 'nvim-tree/nvim-web-devicons'				-- Various icons for Vim/NeoVim
 		use 'ap/vim-css-color'									-- Highlighting CSS colors
 		use 'wittyjudge/gruvbox-material.nvim'	-- GruvBox-Material color scheme
-		
+
+
+	--[[ The Completion Plugin ]]--
+	  use "hrsh7th/nvim-cmp"					-- The completion plugin
+		use "hrsh7th/cmp-buffer"				-- Buffer completions
+		use "hrsh7th/cmp-path"					-- Path completions
+		use "hrsh7th/cmp-cmdline"				-- Cmdline completions
+		use "saadparwaiz1/cmp_luasnip"	-- Snippet completions
+
+
+	--[[ Snippets ]]--
+	  use "L3MON4D3/LuaSnip"							-- Snippet engine
+		use "rafamadriz/friendly-snippets"	-- A bunch of snippets to usef
+
 
 	--[[ Other ]]--
 		use 'wbthomason/packer.nvim'	-- Packer Auto-update
 		use "nvim-lua/popup.nvim"			-- An implementation of the Popup API from vim in Neovimh
 		use 'nvim-lua/plenary.nvim'		-- Dependency for asynchronous NeoVim plugins
 
+
+  -- Automatically set up your configuration after cloning packer.nvim
   if PackerBotstrap then
     require('packer').sync()
   end

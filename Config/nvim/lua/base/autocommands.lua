@@ -17,14 +17,6 @@ vim.cmd [[
 					augroup END
 				]]
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost packer.lua source <afile> | PackerSync
-  augroup end
-]]
-
 -- Highlighting copied lines
 local YankHighlightGrp = vim.api.nvim_create_augroup('YankHighlightGrp', {})
 vim.api.nvim_create_autocmd('TextYankPost', {
