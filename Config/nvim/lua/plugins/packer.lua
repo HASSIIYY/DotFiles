@@ -44,6 +44,8 @@ return require('packer').startup(function(use)
 		use 'nvim-tree/nvim-web-devicons'				-- Various icons for Vim/NeoVim
 		use 'ap/vim-css-color'									-- Highlighting CSS colors
 		use 'wittyjudge/gruvbox-material.nvim'	-- GruvBox-Material color scheme
+		use 'HiPhish/nvim-ts-rainbow2'					-- Illumination of paired elements
+		use 'nvim-treesitter/nvim-treesitter'		-- Enabling Tree-Sitter support in NeoVim
 
 
 	--[[ The Completion Plugin ]]--
@@ -52,11 +54,20 @@ return require('packer').startup(function(use)
 		use "hrsh7th/cmp-path"					-- Path completions
 		use "hrsh7th/cmp-cmdline"				-- Cmdline completions
 		use "saadparwaiz1/cmp_luasnip"	-- Snippet completions
+		use "hrsh7th/cmp-nvim-lsp"			-- Nvim-cmp source for neovim's built-in language server client
+		use "hrsh7th/cmp-nvim-lua"			-- Nvim-cmp source for neovim Lua API.
 
 
 	--[[ Snippets ]]--
 	  use "L3MON4D3/LuaSnip"							-- Snippet engine
 		use "rafamadriz/friendly-snippets"	-- A bunch of snippets to usef
+
+
+	--[[ Language Server Protocol ]]--
+		use 'neovim/nvim-lspconfig'							-- Configs for LSP servers
+		use "williamboman/mason.nvim"						-- Simple to use language server installer
+		use "williamboman/mason-lspconfig.nvim" -- Simple to use language server installer
+		use 'jose-elias-alvarez/null-ls.nvim'		-- LSP diagnostics and code actions
 
 
 	--[[ Other ]]--
@@ -66,7 +77,7 @@ return require('packer').startup(function(use)
 
 
   -- Automatically set up your configuration after cloning packer.nvim
-  if PackerBotstrap then
+  if PACKER_BOOTSTRAP then
     require('packer').sync()
   end
 end)

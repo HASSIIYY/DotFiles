@@ -455,7 +455,7 @@ Command:
 ##### 6. Installing program dependencies:
 ```sh
 Command:
-	sudo pacman -Sy wmctrl pacman-contrib xorg-xsetroot xclip ctags acpilight xf86-input-synaptics python-pip ueberzug ffmpegthumbnailer
+	sudo pacman -Sy wmctrl pacman-contrib xorg-xsetroot xclip ctags acpilight xf86-input-synaptics python-pip ueberzug ffmpegthumbnailer npm
 	pip install neovim python-imap
 ```
 
@@ -610,26 +610,6 @@ Commands:
 ```
 
 ## Installing add-ons for files and programs
-#### Configuring NeoVim
-##### 1. Integrating Packer.nvim:
-```sh
-Command:
-	yay -S nvim-packer-git
-```
-
-##### 2. Installing Plugins:
-```sh
-Command:
-	:PackerSync	# Apply the command in the editor.
-```
-
-##### 3. Installing Tree Sitter Language Models
-```sh
-Command:
-	:TSInstall <language_to_install>:
-		bash c cpp lua markdown python
-```
-
 #### Configuring Ranger
 ##### 1. Integrating Ranger-Devicons:
 ```sh
