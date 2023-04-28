@@ -1992,4 +1992,11 @@ class paste_ext(Command):
     def execute(self):
         return self.fm.paste(make_safe_path=paste_ext.make_safe_path)
 
+class empty(Command):
+    """:empty
 
+    Empties the trash directory ~/.Trash
+    """
+
+    def execute(self):
+        self.fm.run("rm -rf /home/myname/.Trash/")

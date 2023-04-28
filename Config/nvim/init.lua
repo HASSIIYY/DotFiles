@@ -18,6 +18,9 @@ require('keys.plugins.mason')		-- Keyboard shortcuts for Mason
 require('plugins.packer')							-- Module Packer.nvim
 require('plugins.configs.cmp')				-- Module Completion Plugin
 require('plugins.configs.treesitter')	-- Syntax highlighting module in NeoVim
+require('plugins.configs.autopairs')	-- Module Treesitter-based commenting 
+require('plugins.configs.comment')		-- Module auto-completion of paired elements 
+require('plugins.configs.gitsigns')		-- Module displaying changes in Git
 require('gruvbox-material').setup()		-- Applying a color scheme
 
 

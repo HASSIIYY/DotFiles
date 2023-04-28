@@ -38,14 +38,19 @@ packer.init {
 return require('packer').startup(function(use)
 	--[[ Plugins of interaction with the editor ]]--
 		use 'mbbill/undotree'						-- Creates a tree of changes in the file
+		use "windwp/nvim-autopairs"			-- Autopairs, integrates with both cmp and treesitter
+		use "numToStr/Comment.nvim"			-- Easily comment stuff
+		use 'JoosepAlviste/nvim-ts-context-commentstring'
+		use 'nvim-lualine/lualine.nvim'
+		use "lukas-reineke/indent-blankline.nvim"
 
 
 	--[[ Color scheme and appearance ]]--
-		use 'nvim-tree/nvim-web-devicons'				-- Various icons for Vim/NeoVim
+		--[[ use 'nvim-tree/nvim-web-devicons'				-- Various icons for Vim/NeoVim ]]
 		use 'ap/vim-css-color'									-- Highlighting CSS colors
 		use 'wittyjudge/gruvbox-material.nvim'	-- GruvBox-Material color scheme
-		use 'HiPhish/nvim-ts-rainbow2'					-- Illumination of paired elements
 		use 'nvim-treesitter/nvim-treesitter'		-- Enabling Tree-Sitter support in NeoVim
+		use 'HiPhish/nvim-ts-rainbow2'					-- Illumination of paired elements
 
 
 	--[[ The Completion Plugin ]]--
@@ -65,9 +70,13 @@ return require('packer').startup(function(use)
 
 	--[[ Language Server Protocol ]]--
 		use 'neovim/nvim-lspconfig'							-- Configs for LSP servers
-		use "williamboman/mason.nvim"						-- Simple to use language server installer
+		use "williamboman/mason.nvim"						-- Portable package manager for Neovim
 		use "williamboman/mason-lspconfig.nvim" -- Simple to use language server installer
 		use 'jose-elias-alvarez/null-ls.nvim'		-- LSP diagnostics and code actions
+
+
+	--[[ Git ]]--
+		use "lewis6991/gitsigns.nvim"	-- Displaying changes in Git
 
 
 	--[[ Other ]]--

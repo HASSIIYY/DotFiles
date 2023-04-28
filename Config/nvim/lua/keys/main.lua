@@ -28,6 +28,7 @@ nm('<leader>tc', ':tabclose<CR>')			-- Close tab
 nm('<leader>u', ':UndotreeToggle<CR>')
 
 -- Other
+-- nm('<leader>l, ':set list<CR>')
 nm(';', ':')	-- Alias for ';'
 
 

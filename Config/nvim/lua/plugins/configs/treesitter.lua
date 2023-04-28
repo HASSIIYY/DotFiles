@@ -1,8 +1,8 @@
 require'nvim-treesitter.configs'.setup {
 	-- A list of parser names, or "all"
 	ensure_installed = {
-		"bash", "c", "comment", "cpp", "css", "git_config", "gitignore", "html",
-		"ini", "javascript", "jq", "lua", "make", "markdown", "markdown_inline",
+		"bash", "c", "comment", "css", "git_config", "gitignore", "html",
+		"ini", "javascript", "jq", "lua", "markdown", "markdown_inline",
 		"python", "query", "rasi", "vim", "vimdoc"
 	},
 
@@ -11,6 +11,9 @@ require'nvim-treesitter.configs'.setup {
 
 	-- Enable syntax highlighting
 	highlight = { enable = true },
+
+	-- Enable auto-completion of paired elements
+	autopairs = { enable = true	},
 
 	-- Illumination of paired elements
 	rainbow = {
@@ -24,5 +27,11 @@ require'nvim-treesitter.configs'.setup {
 
     -- Highlight the entire buffer all at once
     strategy = require('ts-rainbow').strategy.global,
+  },
+
+	-- Enable Treesitter-based commenting
+	context_commentstring = {
+		enable = true,
+		enable_autocmd = false,
   }
 }

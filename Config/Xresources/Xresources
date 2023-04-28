@@ -19,19 +19,19 @@
 
 ! Correct terminal message about the TERM variable
 ! Available values: xterm, xterm-256color
-UXTerm.termName: xterm-256color
+*termName: xterm-256color
 
 ! Using the system-wide clipboard
-UXTerm.vt100.selectToClipboard: true
+*selectToClipboard: true
 
 ! The number of scroll lines to remember
-UXTerm.vt100.saveLines: 2500
+*saveLines: 2500
 
 ! Redefining the line spacing
 ! Available values: 0.9 - 1.5
 ! Default value: 1.0
-UXTerm.vt100.scaleHeight: 1.0
-UXTerm.vt100.internalBorder: 7
+*scaleHeight: 1.0
+*internalBorder: 7
 
 !#####################################
 !###     FONT CONFIGURAITONS      ####
@@ -76,6 +76,8 @@ UXTerm.vt100.internalBorder: 7
 !#####################################
 
 ! The #override parameter indicates overwriting of existing keyboard shortcuts
-UXTerm.vt100.translations: #override \n\
+*translations: #override \n\
 	Ctrl <Key>C: copy-selection(CLIPBOARD) \n\
-	Ctrl <Key>V: insert-selection(CLIPBOARD)
+	Ctrl <Key>V: insert-selection(CLIPBOARD) \n\
+  Alt <Key>[: smaller-vt-font() \n\
+  Alt <Key>]: larger-vt-font()

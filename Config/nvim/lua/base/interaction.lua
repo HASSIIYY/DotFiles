@@ -8,4 +8,5 @@ opt.langmap = "ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKL
 opt.mouse = 'a'			-- Enable mouse support
 opt.scrolloff = 7		-- The number of lines of indentation from the bottom line of the editor
 opt.pumheight = 10	-- pop up menu height
+opt.laststatus = 3
 
